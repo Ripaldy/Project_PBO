@@ -4,7 +4,7 @@ class Menu:
     def __init__(self, screen, font_path=None):
         self.screen = screen
         self.font = pygame.font.Font(font_path, 36) if font_path else pygame.font.SysFont("Arial", 36)
-        self.options = ["Start Game", "Quit"]
+        self.options = ["Mulai Game", "Keluar"]
         self.selected = 0
         self.running = True
         self.option_rects = []
@@ -41,7 +41,7 @@ class Menu:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
-                return "Quit"
+                return "keluar"
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     self.selected = (self.selected - 1) % len(self.options)
@@ -62,9 +62,9 @@ class Menu:
         self.create_option_rects()
         while self.running:
             aksi = self.handle_input()
-            if aksi == "start_game":
-                return "start"
-            elif aksi == "quit":
-                return "quit"
+            if aksi == "mulai_game":
+                return "mulai"
+            elif aksi == "keluar":
+                return "keluar"
             self.draw()
 
